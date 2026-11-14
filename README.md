@@ -44,4 +44,15 @@ The **Patient Management Portal** is a centralized healthcare information system
 
 ## Unit Testing & Verification
 
-Unit tests
+Unit tests are implemented using **Java 17**, **JUnit 5**, and **Mockito** to verify access control enforcement and record retrieval logic in `PatientService`.
+
+### Sample Test Coverage (`PatientServiceTest.java`)
+| Test ID | Scenario | Expected Outcome | Status |
+| :--- | :--- | :--- | :--- |
+| **TC-1** | Authorized `DOCTOR` retrieves patient record (`P-1001`) | Returns valid `PatientRecord` | PASS |
+| **TC-2** | `PATIENT` accesses their own record (`P-1001`) | Returns valid `PatientRecord` | PASS |
+| **TC-3** | Unauthorized `RECEPTIONIST` attempts record access | Throws `SecurityException` (`Access denied`) | PASS |
+
+### Running Tests
+```bash
+mvn test
